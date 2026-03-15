@@ -1,0 +1,15 @@
+"use client";
+
+import { CldImage } from "next-cloudinary";
+
+export default function PartImage({ src }: { src: string }) {
+    console.log(src,'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk')
+  return (
+    <CldImage
+      width="100"
+      height="100"
+      src={src}
+      alt="image"
+    />
+  );
+}

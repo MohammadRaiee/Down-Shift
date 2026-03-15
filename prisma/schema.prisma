@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+//generator client {
+//  provider = "prisma-client"
+//  output   = "../lib/generated/prisma"
+//}
+
+//datasource db {
+//  provider = "postgresql"
+//}
+// prisma/schema.prisma
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//////////////////////////////////////////////////
+// ENUMS
+//////////////////////////////////////////////////
+
+enum Condition {
+  NEW
+  USED
+  REFURBISHED
+}
+
+//////////////////////////////////////////////////
+// MODELS
+//////////////////////////////////////////////////
+
+model User {
+  id            Int      @id @default(autoincrement())
+  email         String   @unique
+  passwordHash  String
+  firstName     String?
+  lastName      String?
+  role          String   @default("client")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  isVerified    Boolean  @default(false)
+
+  // العلاقة: المستخدم يمكنه نشر عدة قطع
+  parts         Part[]
+}
+
+model Part {
+  id             String      @id @default(cuid())
+
+  // 🔴 القيم الإجبارية
+  title          String
+  price          Decimal     @db.Decimal(10,2)
+  manufacturer   String
+  condition      Condition
+  compatibleCars String[]
+  publisherId    Int
+
+  // 🆕 عدد القطع المتوفرة
+  stock          Int         @default(0)
+
+  // العلاقة مع المستخدم
+  publisher      User        @relation(fields: [publisherId], references: [id], onDelete: Cascade)
+
+  images         String[]
+
+  // 🟢 القيم غير الإجبارية
+  description    String?
+
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+
+  @@index([manufacturer])
+  @@index([condition])
+  @@index([compatibleCars], type: Gin)
+}
+//npx prisma migrate dev --name init_store_models 
+// npx prisma generate
