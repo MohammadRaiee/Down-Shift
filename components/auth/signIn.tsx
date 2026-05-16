@@ -4,6 +4,7 @@ import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signOut } from 'next-auth/react';
+import { mergeGuestCartAfterLogin } from "@/lib/guestCartMerge";
 
 export default function Login() {
   const router = useRouter();
@@ -14,7 +15,6 @@ export default function Login() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setIsLoading(true)
-console.log(email , password)
     const res = await signIn("credentials", {
       email,
       password,
@@ -26,6 +26,7 @@ console.log(email , password)
       alert(res.error);
     } 
     else {
+        await mergeGuestCartAfterLogin();
         setIsLoading(false)
       router.push("/");
     }
@@ -39,7 +40,7 @@ router.push(res.url)
  };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center min-h-screen space-y-4"  >
       <input
         type="email"
         placeholder="email"

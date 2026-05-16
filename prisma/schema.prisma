@@ -1,22 +1,10 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
-//generator client {
-//  provider = "prisma-client"
-//  output   = "../lib/generated/prisma"
-//}
-
-//datasource db {
-//  provider = "postgresql"
-//}
-// prisma/schema.prisma
-
-
 generator client {
   provider = "prisma-client-js"
+}
+
+generator erd {
+  provider = "prisma-erd-generator"
+  output   = "./ERD.svg"
 }
 
 datasource db {
@@ -24,63 +12,115 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-//////////////////////////////////////////////////
-// ENUMS
-//////////////////////////////////////////////////
-
-enum Condition {
-  NEW
-  USED
-  REFURBISHED
+model Seller {
+  id              Int      @id @default(autoincrement())
+  firstName       String
+  lastName        String
+  email           String   @unique
+  password        String
+  phone           String
+  storeName       String
+  businessType    String
+  businessReg     String?
+  storeLogo       String?
+  GPSLocation     String?
+  address         String
+  city            String
+  shippingOptions String[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  isActive        Boolean  @default(true)
+  parts           Parts[]
 }
-
-//////////////////////////////////////////////////
-// MODELS
-//////////////////////////////////////////////////
 
 model User {
-  id            Int      @id @default(autoincrement())
-  email         String   @unique
-  passwordHash  String
-  firstName     String?
-  lastName      String?
-  role          String   @default("client")
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  isVerified    Boolean  @default(false)
-
-  // العلاقة: المستخدم يمكنه نشر عدة قطع
-  parts         Part[]
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  passwordHash String
+  firstName    String?
+  lastName     String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  isVerified   Boolean  @default(false)
+  image        String?
+  carts        Cart[]
 }
 
-model Part {
-  id             String      @id @default(cuid())
-
-  // 🔴 القيم الإجبارية
-  title          String
-  price          Decimal     @db.Decimal(10,2)
-  manufacturer   String
-  condition      Condition
-  compatibleCars String[]
-  publisherId    Int
-
-  // 🆕 عدد القطع المتوفرة
-  stock          Int         @default(0)
-
-  // العلاقة مع المستخدم
-  publisher      User        @relation(fields: [publisherId], references: [id], onDelete: Cascade)
-
-  images         String[]
-
-  // 🟢 القيم غير الإجبارية
-  description    String?
-
-  createdAt      DateTime    @default(now())
-  updatedAt      DateTime    @updatedAt
-
-  @@index([manufacturer])
-  @@index([condition])
-  @@index([compatibleCars], type: Gin)
+model CarBrand {
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  createdAt DateTime   @default(now())
+  models    CarModel[]
 }
-//npx prisma migrate dev --name init_store_models 
-// npx prisma generate
+
+model CarModel {
+  id        Int       @id @default(autoincrement())
+  brandId   Int
+  name      String
+  year      Int
+  createdAt DateTime  @default(now())
+  brand     CarBrand  @relation(fields: [brandId], references: [id])
+  parts     PartCar[]
+}
+
+model Parts {
+
+
+  id              Int       @id @default(autoincrement())
+  name            String
+  partNumber      String?   @unique
+  price           Float
+  description     String?
+  publisherId     Int
+  createdAt       DateTime  @default(now())
+  image           String[]
+  countryOfOrigin String
+  quality         String    @default("Good")
+  cars            PartCar[]
+  publisher       Seller    @relation(fields: [publisherId], references: [id], onDelete: Cascade)
+  categoryId      Int?
+  category        Category? @relation(fields: [categoryId], references: [id])
+  cartItems       CartItem[]
+}
+
+model Category {
+  id    Int     @id @default(autoincrement())
+  name  String  @unique
+  parts Parts[]
+}
+
+model PartCar {
+  id         Int      @id @default(autoincrement())
+  partId     Int
+  carModelId Int
+  carModel   CarModel @relation(fields: [carModelId], references: [id], onDelete: Cascade)
+  part       Parts    @relation(fields: [partId], references: [id], onDelete: Cascade)
+
+  @@unique([partId, carModelId])
+}
+
+
+model Cart {
+  id        Int        @id @default(autoincrement())
+  user      User?      @relation(fields: [userId], references: [id])
+  userId    Int?       @unique
+  items     CartItem[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model CartItem {
+  id        Int      @id @default(autoincrement())
+  cart      Cart     @relation(fields: [cartId], references: [id])
+  cartId    Int
+  part      Parts    @relation(fields: [partId], references: [id])
+  partId    Int
+  quantity  Int
+  priceAtAdd Float
+  options   Json?
+  key       String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([cartId, key])
+}

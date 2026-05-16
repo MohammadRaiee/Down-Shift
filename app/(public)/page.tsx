@@ -1,21 +1,28 @@
 import { prisma } from "@/lib/prisma";
-import { Part } from "@prisma/client";
-import PublicParts from '@/components/parts/public_parts'
-export default async function Parts(){
-    
-  const partsFromDb = await prisma.part.findMany({
-   orderBy: {
+import { Parts } from "@prisma/client";
+import PublicPageClient from "@/components/PublicPageClient";
+
+export default async function Page() {
+  const partsFromDb = await prisma.parts.findMany({
+    orderBy: {
       createdAt: "desc",
+    },
+    include: {
+      publisher: true,
+      cars: {
+        include: {
+          carModel: {
+            include: { brand: true },
+          },
+        },
+      },
     },
   });
 
-  const parts = partsFromDb.map((part: Part) => ({
+  const parts = partsFromDb.map((part: any) => ({
     ...part,
     price: Number(part.price),
   }));
 
-
-    return (<>
-    <PublicParts parts={parts} />
-    </>)
+  return <PublicPageClient initialParts={parts} />;
 }

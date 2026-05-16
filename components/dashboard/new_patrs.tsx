@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
+import { uploadImage } from "@/lib/cloudinary";
 export default function NewPartPage() {
   const router = useRouter();
 
@@ -18,54 +18,53 @@ export default function NewPartPage() {
   const handleAddCar = (car: string) => {
     if (!car) return;
     setCompatibleCars([...compatibleCars, car]);
-    console.log(compatibleCars)
   };
 
- async function  uploadImage  (){
-  const imagesUlr=[]
-     try {
-      if(image !== undefined){
-        for (const file  of Array.from(image)) {
-        const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", "car_parts"); 
-    formData.append("folder", "car_parts");
+//  async function  uploadImage  (image:FileList){
+//   const imagesUlr=[]
+//      try {
+//       if(image !== undefined){
+//         for (const file  of Array.from(image)) {
+//         const formData = new FormData();
+//     formData.append("file", file);
+//     formData.append("upload_preset", "car_parts"); 
+//     formData.append("folder", "car_parts");
 
- const res = await fetch(
-        "https://api.cloudinary.com/v1_1/dlxcorjvq/image/upload",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+//  const res = await fetch(
+//         "https://api.cloudinary.com/v1_1/dlxcorjvq/image/upload",
+//         {
+//           method: "POST",
+//           body: formData,
+//         }
+//       );
 
-      const data = await res.json();
+//       const data = await res.json();
 
-   if (!res.ok) {
-    const errorData = await res.json()
-    throw new Error(errorData.error?.message || "Upload failed")}
-          imagesUlr.push(data.secure_url)
-     console.log(data.secure_url)   
-}
-return imagesUlr
-}else{
-  throw new Error('there are not image')
-}
+//    if (!res.ok) {
+//     const errorData = await res.json()
+//     throw new Error(errorData.error?.message || "Upload failed")}
+//           imagesUlr.push(data.secure_url)
+// }
+// return imagesUlr
+// }else{
+//   throw new Error('there are not image')
+// }
     
-} catch (error) {
-    console.log(error)
-       alert("حدث خطأ أثناء رفع الصورة");
-      throw new Error('upload field')
+// } catch (error) {
+//        alert("حدث خطأ أثناء رفع الصورة");
+//       throw new Error('upload field')
      
-    }
-  }
+//     }
+//   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+let uploadedImage=undefined
+if (image) {
+  uploadedImage = await uploadImage(image);
+}
 
-  const image = await uploadImage()
-console.log(image)
 
     setLoading(false);
     const res = await fetch("/api/parts/new", {
@@ -77,7 +76,7 @@ console.log(image)
         condition,
         description,
         compatibleCars,
-        image,
+        image:uploadedImage,
       }),
     });
 
@@ -86,7 +85,6 @@ console.log(image)
     if (res.ok) {
       router.push("/dashboard/parts");
     } else {
-      console.log(res)
       alert("حدث خطأ أثناء رفع القطعة");
     }
   };

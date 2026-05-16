@@ -7,7 +7,6 @@ export default async function PartLayout({
 }) {
 
   const session = await auth();
-console.log(session)
   if (session?.user.role !=='seller') {
     return <div>يجب تسجيل الدخول</div>;
   }
