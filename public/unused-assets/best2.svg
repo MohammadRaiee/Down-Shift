@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 600">
+  <defs>
+    <linearGradient id="chrome1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="25%" stop-color="#A5B0C0"/>
+      <stop offset="50%" stop-color="#E2E8F0"/>
+      <stop offset="75%" stop-color="#475569"/>
+      <stop offset="100%" stop-color="#CBD5E1"/>
+    </linearGradient>
+
+    <linearGradient id="chromeHighlight1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#64748B"/>
+    </linearGradient>
+
+    <linearGradient id="darkMetal1" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+
+    <linearGradient id="wingMetal1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5A5A5A"/>
+      <stop offset="50%" stop-color="#222222"/>
+      <stop offset="100%" stop-color="#0F0F0F"/>
+    </linearGradient>
+
+    <linearGradient id="crimson1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF3333"/>
+      <stop offset="30%" stop-color="#D90000"/>
+      <stop offset="70%" stop-color="#800000"/>
+      <stop offset="100%" stop-color="#330000"/>
+    </linearGradient>
+
+    <linearGradient id="redAccent1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF4D4D"/>
+      <stop offset="100%" stop-color="#990000"/>
+    </linearGradient>
+
+    <radialGradient id="bgGlow1" cx="40%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#1A0505"/>
+      <stop offset="60%" stop-color="#0A0505"/>
+      <stop offset="100%" stop-color="#030303"/>
+    </radialGradient>
+
+    <mask id="hollowCenter1">
+      <rect x="0" y="0" width="1600" height="600" fill="white"/>
+      <circle cx="400" cy="300" r="95" fill="black"/>
+    </mask>
+
+    <g id="wingBlade1">
+      <path d="
+        M 506 180
+        L 760 180
+        L 738 215
+        L 570 215
+        L 578 235
+        L 725 235
+        L 703 270
+        L 587 270
+        L 590 290
+        L 691 290
+        L 669 325
+        L 588 325
+        L 585 345
+        L 656 345
+        L 634 380
+        L 572 380
+        L 561 400
+        L 622 400
+        L 600 435
+        L 486 435
+        A 160 160 0 0 0 506 180
+        Z" 
+        fill="url(#wingMetal1)" 
+        stroke="url(#chrome1)" 
+        stroke-width="2" 
+        stroke-linejoin="round" />
+    </g>
+
+    <g id="gearTeeth1">
+      <rect x="382" y="135" width="36" height="330" rx="6" fill="url(#crimson1)"/>
+      <rect x="382" y="135" width="36" height="330" rx="6" transform="rotate(30 400 300)" fill="url(#crimson1)"/>
+      <rect x="382" y="135" width="36" height="330" rx="6" transform="rotate(60 400 300)" fill="url(#crimson1)"/>
+      <rect x="382" y="135" width="36" height="330" rx="6" transform="rotate(90 400 300)" fill="url(#crimson1)"/>
+      <rect x="382" y="135" width="36" height="330" rx="6" transform="rotate(120 400 300)" fill="url(#crimson1)"/>
+      <rect x="382" y="135" width="36" height="330" rx="6" transform="rotate(150 400 300)" fill="url(#crimson1)"/>
+    </g>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="600" fill="#030303" />
+  <rect x="0" y="0" width="1600" height="600" fill="url(#bgGlow1)" />
+
+  <use href="#wingBlade1" />
+  <use href="#wingBlade1" transform="translate(800, 0) scale(-1, 1)" />
+
+  <g mask="url(#hollowCenter1)">
+    <use href="#gearTeeth1" />
+    <circle cx="400" cy="300" r="142" fill="url(#crimson1)" stroke="url(#redAccent1)" stroke-width="6" />
+    <circle cx="400" cy="300" r="110" fill="none" stroke="url(#chromeHighlight1)" stroke-width="3" stroke-dasharray="14, 10" />
+  </g>
+
+  <circle cx="400" cy="300" r="95" fill="none" stroke="url(#redAccent1)" stroke-width="5" stroke-dasharray="30, 15" />
+  <circle cx="400" cy="300" r="89" fill="none" stroke="url(#chrome1)" stroke-width="1.5" />
+  <circle cx="400" cy="300" r="85" fill="none" stroke="#000000" stroke-width="6" stroke-dasharray="10, 10" />
+
+  <g id="pistonGroup1">
+    <rect x="376" y="200" width="48" height="200" fill="url(#darkMetal1)" />
+    <rect x="386" y="200" width="28" height="200" fill="url(#chrome1)" />
+    
+    <path d="M 330,225 L 470,225 L 470,140 Q 400,105 330,140 Z" fill="url(#chrome1)" />
+    <path d="M 335,225 L 465,225 L 465,142 Q 400,112 335,142 Z" fill="url(#darkMetal1)" />
+    
+    <rect x="325" y="150" width="150" height="5" rx="2" fill="url(#chromeHighlight1)" />
+    <rect x="325" y="165" width="150" height="5" rx="2" fill="url(#chromeHighlight1)" />
+    <rect x="325" y="180" width="150" height="5" rx="2" fill="url(#chromeHighlight1)" />
+    <rect x="325" y="195" width="150" height="5" rx="2" fill="url(#chromeHighlight1)" />
+    
+    <circle cx="400" cy="180" r="20" fill="url(#darkMetal1)" />
+    <circle cx="400" cy="180" r="14" fill="#0A0A0A" />
+    <circle cx="400" cy="180" r="9" fill="url(#chrome1)" />
+
+    <path d="M 340,400 Q 330,475 400,475 Q 470,475 460,400 Z" fill="url(#chrome1)" />
+    <path d="M 346,402 Q 338,467 400,467 Q 462,467 454,402 Z" fill="url(#darkMetal1)" />
+    
+    <rect x="330" y="380" width="140" height="24" rx="4" fill="url(#darkMetal1)" />
+    <rect x="335" y="384" width="130" height="16" rx="3" fill="url(#chrome1)" />
+
+    <circle cx="400" cy="430" r="30" fill="#030303" stroke="url(#chromeHighlight1)" stroke-width="4"/>
+    <circle cx="400" cy="430" r="37" fill="none" stroke="url(#darkMetal1)" stroke-width="2"/>
+    
+    <circle cx="355" cy="392" r="5" fill="#030303" />
+    <circle cx="445" cy="392" r="5" fill="#030303" />
+  </g>
+  
+  <circle cx="400" cy="95" r="4" fill="url(#redAccent1)" />
+  <circle cx="400" cy="490" r="4" fill="url(#chromeHighlight1)" />
+  
+  <text x="800" y="340" font-family="'Arial Black', Impact, sans-serif" font-size="130" font-weight="900" font-style="italic" fill="url(#chrome1)">DOWN <tspan fill="url(#redAccent1)">SHIFT</tspan></text>
+</svg>

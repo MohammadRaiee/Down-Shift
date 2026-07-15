@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json();
-    const { email, password, firstName, lastName, type } = body;
+    const { email, password, firstName, lastName, type, image } = body;
 console.log(body.GPSLocation ,'fdfffffffffffffffffffffffffffffffffff')
     if (!email || !password || !type) {
       return NextResponse.json(
@@ -50,6 +50,7 @@ console.log(body.GPSLocation ,'fdfffffffffffffffffffffffffffffffffff')
           passwordHash: hashedPassword,
           firstName: firstName || null,
           lastName: lastName || null,
+          image: image || null,
         },
       });
     } else if (type === "seller") {

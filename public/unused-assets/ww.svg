@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
+  <defs>
+    <!-- Realistic 3D Cylindrical Metal Gradient -->
+    <linearGradient id="metal-cylinder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1A1C20" />
+      <stop offset="10%" stop-color="#4A5059" />
+      <stop offset="30%" stop-color="#FFFFFF" />
+      <stop offset="60%" stop-color="#717A87" />
+      <stop offset="85%" stop-color="#2D3138" />
+      <stop offset="95%" stop-color="#E2E8F0" />
+      <stop offset="100%" stop-color="#111317" />
+    </linearGradient>
+
+    <!-- H-Beam Connecting Rod Inner Shadow Gradient -->
+    <linearGradient id="h-beam-inner" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0F1115" />
+      <stop offset="50%" stop-color="#2A2D35" />
+      <stop offset="100%" stop-color="#0F1115" />
+    </linearGradient>
+
+    <linearGradient id="lux-red" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B91C1C" />
+      <stop offset="50%" stop-color="#DC2626" />
+      <stop offset="100%" stop-color="#7F1D1D" />
+    </linearGradient>
+
+    <linearGradient id="red-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF4D4D" />
+      <stop offset="50%" stop-color="#B91C1C" />
+      <stop offset="100%" stop-color="#450A0A" />
+    </linearGradient>
+
+    <!-- Gear Tooth Setup -->
+    <g id="gear-tooth">
+      <path d="M 465 140 L 535 140 C 540 140 545 150 545 155 L 530 220 L 470 220 L 455 155 C 455 150 460 140 465 140 Z" fill="url(#metal-cylinder)" opacity="0.85"/>
+      <path d="M 465 140 L 490 140 L 485 220 L 470 220 Z" fill="#FFFFFF" opacity="0.3" />
+    </g>
+
+    <!-- Background Gear -->
+    <g id="full-gear">
+      <circle cx="500" cy="500" r="300" fill="#0A0B0E" stroke="url(#metal-cylinder)" stroke-width="25" />
+      <circle cx="500" cy="500" r="260" fill="none" stroke="url(#lux-red)" stroke-width="40" opacity="0.9" />
+      <circle cx="500" cy="500" r="283" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.5" />
+      <circle cx="500" cy="500" r="237" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.5" />
+      
+      <use href="#gear-tooth" transform="rotate(0 500 500)" />
+      <use href="#gear-tooth" transform="rotate(22.5 500 500)" />
+      <use href="#gear-tooth" transform="rotate(45 500 500)" />
+      <use href="#gear-tooth" transform="rotate(67.5 500 500)" />
+      <use href="#gear-tooth" transform="rotate(90 500 500)" />
+      <use href="#gear-tooth" transform="rotate(112.5 500 500)" />
+      <use href="#gear-tooth" transform="rotate(135 500 500)" />
+      <use href="#gear-tooth" transform="rotate(157.5 500 500)" />
+      <use href="#gear-tooth" transform="rotate(180 500 500)" />
+      <use href="#gear-tooth" transform="rotate(202.5 500 500)" />
+      <use href="#gear-tooth" transform="rotate(225 500 500)" />
+      <use href="#gear-tooth" transform="rotate(247.5 500 500)" />
+      <use href="#gear-tooth" transform="rotate(270 500 500)" />
+      <use href="#gear-tooth" transform="rotate(292.5 500 500)" />
+      <use href="#gear-tooth" transform="rotate(315 500 500)" />
+      <use href="#gear-tooth" transform="rotate(337.5 500 500)" />
+    </g>
+
+    <!-- Wing Motif -->
+    <g id="luxe-wing">
+      <path d="M 230 400 Q 150 400 80 320 Q 180 430 250 450 Z" fill="url(#metal-cylinder)" />
+      <path d="M 240 460 Q 140 450 60 380 Q 160 500 240 520 Z" fill="url(#red-glow)" />
+      <path d="M 260 530 Q 150 510 90 450 Q 180 570 260 590 Z" fill="url(#metal-cylinder)" />
+    </g>
+  </defs>
+
+  <g transform="translate(0, -30)">
+    <use href="#full-gear" />
+    <use href="#luxe-wing" />
+    <use href="#luxe-wing" transform="scale(-1, 1) translate(-1000, 0)" />
+
+    <!-- 3D Piston Head -->
+    <path d="M 330 210 C 330 180 400 170 500 170 C 600 170 670 180 670 210 L 670 420 C 670 440 650 480 590 500 C 590 500 540 520 500 520 C 460 520 410 500 410 500 C 350 480 330 440 330 420 Z" fill="url(#metal-cylinder)" />
+    
+    <!-- Piston Crown Highlight -->
+    <ellipse cx="500" cy="190" rx="170" ry="25" fill="#0A0B0E" stroke="url(#metal-cylinder)" stroke-width="4" />
+    <ellipse cx="500" cy="190" rx="168" ry="23" fill="url(#metal-cylinder)" opacity="0.3" />
+
+    <!-- Compression Rings/Grooves -->
+    <path d="M 330 250 C 400 280 600 280 670 250 L 670 265 C 600 295 400 295 330 265 Z" fill="#0A0B0E" />
+    <path d="M 330 285 C 400 315 600 315 670 285 L 670 300 C 600 330 400 330 330 300 Z" fill="#0A0B0E" />
+    <path d="M 330 320 C 400 350 600 350 670 320 L 670 335 C 600 365 400 365 330 335 Z" fill="#0A0B0E" />
+
+    <!-- Oil Ring Highlights -->
+    <path d="M 332 263 C 400 292 600 292 668 263" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.5"/>
+    <path d="M 332 298 C 400 327 600 327 668 298" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.5"/>
+    <path d="M 332 333 C 400 362 600 362 668 333" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.5"/>
+
+    <!-- Wrist Pin / Gudgeon Pin Cutout -->
+    <ellipse cx="500" cy="410" rx="45" ry="55" fill="#0A0B0E" />
+    <ellipse cx="500" cy="410" rx="45" ry="55" fill="none" stroke="url(#metal-cylinder)" stroke-width="4" />
+    <ellipse cx="500" cy="410" rx="35" ry="45" fill="url(#h-beam-inner)" />
+    <!-- Pin internal highlight -->
+    <path d="M 465 410 A 35 45 0 0 1 535 410" fill="none" stroke="#FFFFFF" stroke-width="3" opacity="0.3" />
+
+    <!-- Connecting Rod (I-Beam style) -->
+    <path d="M 440 450 L 560 450 Q 560 600 580 730 L 420 730 Q 440 600 440 450 Z" fill="url(#metal-cylinder)" />
+    <path d="M 465 470 L 535 470 Q 540 600 550 710 L 450 710 Q 460 600 465 470 Z" fill="url(#h-beam-inner)" />
+    <!-- Rod Highlights -->
+    <path d="M 442 450 Q 442 600 422 730" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.7" />
+    <path d="M 558 450 Q 558 600 578 730" fill="none" stroke="#111" stroke-width="4" opacity="0.6" />
+
+    <!-- Big End Bearing / Cap -->
+    <path d="M 390 730 L 610 730 C 630 730 640 760 640 790 L 640 820 C 640 860 580 890 500 890 C 420 890 360 860 360 820 L 360 790 C 360 760 370 730 390 730 Z" fill="url(#metal-cylinder)" />
+    <circle cx="500" cy="800" r="70" fill="#0A0B0E" stroke="url(#metal-cylinder)" stroke-width="12" />
+    <circle cx="500" cy="800" r="58" fill="url(#metal-cylinder)" opacity="0.1" />
+
+    <!-- Rod Cap Bolts -->
+    <rect x="380" y="770" width="30" height="40" rx="10" fill="url(#metal-cylinder)" />
+    <rect x="590" y="770" width="30" height="40" rx="10" fill="url(#metal-cylinder)" />
+    <line x1="395" y1="775" x2="395" y2="805" stroke="#111" stroke-width="2" />
+    <line x1="605" y1="775" x2="605" y2="805" stroke="#111" stroke-width="2" />
+  </g>
+</svg>

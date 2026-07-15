@@ -9,6 +9,7 @@ export default async function DashboardLayout({
 }) {
   const session = await auth()
 if(session){
+  // console.log('session',session)
   if (session?.user.role !== 'seller') {
 
     return <h1>This page is for sellers only</h1>

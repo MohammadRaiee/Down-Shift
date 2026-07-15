@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import YmmSearch from "@/components/parts/YmmSearch";
-import PublicParts from "@/components/parts/public_parts";
+import YmmSearch from "@/deleted/ignoredparts/YmmSearch";
+import PublicParts from "@/deleted/ignoredparts/public_parts";
 
 interface SearchResult {
   id: string;
@@ -27,8 +27,9 @@ export default function DashboardPageClient({ initialParts }: DashboardPageClien
     <div className="w-full space-y-8 px-6 py-10">
       <h1 className="text-3xl font-bold">Dashboard</h1>
 
+      {/* Search component */}
       <div className="mb-8">
-        <h2 className="mb-4 text-lg font-semibold">البحث عن القطع</h2>
+        <h2 className="mb-4 text-lg font-semibold">Search for parts</h2>
         <YmmSearch
           onSearch={(results: SearchResult[]) => {
             setSearchResults(results);
@@ -36,30 +37,33 @@ export default function DashboardPageClient({ initialParts }: DashboardPageClien
           }}
         />
 
+        {/* Button to reset and show all parts */}
         {hasSearched && (
           <div className="text-center mt-4">
             <button
               onClick={() => setHasSearched(false)}
               className="btn btn-outline px-4 py-2 bg-slate-200 rounded-lg hover:bg-slate-300"
             >
-              عرض جميع القطع
+              Show all parts
             </button>
           </div>
         )}
       </div>
 
+      {/* Title for displayed parts */}
       <div>
         <h2 className="text-xl font-semibold mb-4">
-          {hasSearched ? "نتائج البحث" : "القطع التي نشرتها"}
+          {hasSearched ? "Search Results" : "My Published Parts"}
         </h2>
 
+        {/* Displayed parts */}
         {hasSearched && searchResults.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">لم يتم العثور على نتائج</p>
+            <p className="text-gray-500 text-lg">No results found</p>
           </div>
         ) : displayParts.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">لا يوجد قطع منشورة</p>
+            <p className="text-gray-500 text-lg">No parts published</p>
           </div>
         ) : (
           <PublicParts parts={displayParts as any} />

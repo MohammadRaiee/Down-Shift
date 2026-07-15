@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react';
 
 /**
- * Hook للـ Debouncing
- * يؤخر تحديث القيمة حتى يتوقف المستخدم عن الكتابة
+ * Debounce hook
+ * Delays updating the value until the user stops typing
  */
 export function useDebouncedValue<T>(value: T, delay: number): T {
   const [debouncedValue, setDebouncedValue] = useState<T>(value);
 
   useEffect(() => {
-    // تعيين timeout للتحديث المتأخر
+    // Set a timeout for the delayed update
     const handler = setTimeout(() => {
       setDebouncedValue(value);
     }, delay);
 
-    // تنظيف الـ timeout السابق
+    // Clean up the previous timeout
     return () => clearTimeout(handler);
   }, [value, delay]);
 

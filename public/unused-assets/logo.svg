@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <!-- Gear Tooth template to be rotated -->
+    <g id="gear-tooth">
+      <path d="M -15 -180 L 15 -180 L 25 -140 L -25 -140 Z" fill="#E60000"/>
+    </g>
+    <!-- Half Wing template to be mirrored -->
+    <g id="wing">
+      <path d="M 120 180 L 360 180 L 360 210 L 120 210 Z" fill="#000000"/>
+      <path d="M 130 230 L 330 230 L 330 260 L 125 260 Z" fill="#000000"/>
+      <path d="M 135 280 L 300 280 L 300 310 L 125 310 Z" fill="#000000"/>
+      <path d="M 140 330 L 270 330 L 270 360 L 120 360 Z" fill="#000000"/>
+      <path d="M 120 380 L 240 380 L 240 410 L 110 410 Z" fill="#000000"/>
+      <!-- Solid side connection -->
+      <path d="M 110 180 L 360 180 L 240 410 L 110 410 Z" fill="#000000" clip-path="url(#wing-cut)"/>
+    </g>
+    <clipPath id="wing-cut">
+       <polygon points="120,180 360,180 240,410 110,410 90,290" />
+    </clipPath>
+  </defs>
+
+  <rect width="800" height="600" fill="#FFFFFF" />
+
+  <g transform="translate(400, 300)">
+    
+    <!-- Red Central Gear -->
+    <g id="gear">
+      <circle cx="0" cy="0" r="140" fill="none" stroke="#E60000" stroke-width="40" />
+      <use href="#gear-tooth" transform="rotate(0)" />
+      <use href="#gear-tooth" transform="rotate(22.5)" />
+      <use href="#gear-tooth" transform="rotate(45)" />
+      <use href="#gear-tooth" transform="rotate(67.5)" />
+      <use href="#gear-tooth" transform="rotate(90)" />
+      <use href="#gear-tooth" transform="rotate(112.5)" />
+      <use href="#gear-tooth" transform="rotate(135)" />
+      <use href="#gear-tooth" transform="rotate(157.5)" />
+      <use href="#gear-tooth" transform="rotate(180)" />
+      <use href="#gear-tooth" transform="rotate(202.5)" />
+      <use href="#gear-tooth" transform="rotate(225)" />
+      <use href="#gear-tooth" transform="rotate(247.5)" />
+      <use href="#gear-tooth" transform="rotate(270)" />
+      <use href="#gear-tooth" transform="rotate(292.5)" />
+      <use href="#gear-tooth" transform="rotate(315)" />
+      <use href="#gear-tooth" transform="rotate(337.5)" />
+    </g>
+
+    <!-- Right Wing -->
+    <g transform="translate(0, -280)">
+      <path d="M 120 160 L 380 160 L 340 220 L 130 220 Z" fill="#000000"/>
+      <path d="M 135 240 L 310 240 L 270 300 L 140 300 Z" fill="#000000"/>
+      <path d="M 145 320 L 240 320 L 200 380 L 135 380 Z" fill="#000000"/>
+      <path d="M 140 400 L 170 400 L 130 460 L 120 460 Z" fill="#000000"/>
+      <path d="M 110 160 C 130 250 140 350 100 460 L 380 160 Z" fill="#000000"/>
+    </g>
+
+    <!-- Left Wing -->
+    <g transform="translate(0, -280) scale(-1, 1)">
+      <path d="M 120 160 L 380 160 L 340 220 L 130 220 Z" fill="#000000"/>
+      <path d="M 135 240 L 310 240 L 270 300 L 140 300 Z" fill="#000000"/>
+      <path d="M 145 320 L 240 320 L 200 380 L 135 380 Z" fill="#000000"/>
+      <path d="M 140 400 L 170 400 L 130 460 L 120 460 Z" fill="#000000"/>
+      <path d="M 110 160 C 130 250 140 350 100 460 L 380 160 Z" fill="#000000"/>
+    </g>
+
+    <!-- Black Central Piston -->
+    
+    <!-- Piston Rod -->
+    <rect x="-20" y="-140" width="40" height="340" fill="#000000" />
+    <!-- Rod inner stroke to mimic 3D depth/reflection -->
+    <rect x="-10" y="-130" width="20" height="320" fill="#FFFFFF" />
+    <rect x="-6" y="-120" width="12" height="300" fill="#000000" />
+
+    <!-- Piston Head (Top) -->
+    <rect x="-90" y="-240" width="180" height="30" rx="10" fill="#000000" />
+    <path d="M -90 -220 L 90 -220 L 90 -110 L 40 -110 L 40 -160 C 40 -180 -40 -180 -40 -160 L -40 -110 L -90 -110 Z" fill="#000000" />
+    
+    <!-- Piston Pin Hole -->
+    <circle cx="0" cy="-160" r="22" fill="#FFFFFF" />
+
+    <!-- Piston Details (Rings / Side Grooves) -->
+    <rect x="-70" y="-210" width="10" height="100" fill="#FFFFFF" />
+    <rect x="-55" y="-210" width="10" height="80" fill="#FFFFFF" />
+    <rect x="60" y="-210" width="10" height="100" fill="#FFFFFF" />
+    <rect x="45" y="-210" width="10" height="80" fill="#FFFFFF" />
+
+    <!-- Piston Bearing (Bottom) -->
+    <circle cx="0" cy="200" r="60" fill="#000000" />
+    <circle cx="0" cy="200" r="35" fill="#FFFFFF" />
+    
+    <rect x="-65" y="150" width="130" height="40" fill="#000000" />
+    <circle cx="-50" cy="200" r="10" fill="#FFFFFF" />
+    <circle cx="50" cy="200" r="10" fill="#FFFFFF" />
+    <path d="M -70 170 L 70 170 L 70 230 L -70 230 Z" fill="none" stroke="#000000" stroke-width="15" />
+    <circle cx="0" cy="200" r="45" fill="none" stroke="#000000" stroke-width="10" />
+
+  </g>
+</svg>

@@ -6,7 +6,6 @@ import { buildItemKey, isPositiveInt, jsonError } from "../_utils";
 
 export async function POST(req: NextRequest) {
   try {
-  console.log('اضافة عنصر الى السلة');
     const session = await auth();
     if (!session?.user?.id) {
       return jsonError("UNAUTHORIZED", "Authentication required.", 401);
