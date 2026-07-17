@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import ItemDisplaySection from "@/components/itemDisplay/section";
 export  default async  function Part(){
 
+  
 const session = await auth();
 
   // Check if the user is authenticated and is a seller
