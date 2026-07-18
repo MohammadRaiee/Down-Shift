@@ -39,7 +39,7 @@ I built this to go beyond basic CRUD and practice the patterns real e-commerce a
 
 ## Screenshots
 
-*(Add your actual image paths here)*
+
 ![Home Page](./public/screenshots/home.png)
 ![Part Details](./public/screenshots/part-details.png)
 ![Seller Dashboard](./public/screenshots/dashboard.png)
