@@ -94,7 +94,6 @@ export default function({ parts }: { parts: PartDetails[] }) {
     Poor: "bg-orange-700",
   };
 
-  // تأكد من توافق جودة المنتج مع الستايلات (مثلا "Original" قد تحتاج إضافتها هنا)
   const getQualityStyle = (quality?: PartQuality | string) =>
     quality && QUALITY_STYLES[quality as PartQuality] 
       ? QUALITY_STYLES[quality as PartQuality] 
@@ -214,8 +213,9 @@ export default function({ parts }: { parts: PartDetails[] }) {
                     {part.name}
                   </h1>
 
-                  <div className="mt-1">
+                  <div className="mt-1 flex items-center">
                     <p className="text-white text-xl font-bold">{part.price.toFixed(2)}</p>
+                    <p className="text-white text-xl font-bold ml-1">$</p>
                   </div>
 
                   {/* Description - تم تعديله ليسمح بسطرين وإعطائه مساحة أفضل */}
