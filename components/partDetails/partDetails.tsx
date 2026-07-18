@@ -1,14 +1,15 @@
 import Image from "next/image";
 import { Button } from "../ui/button";
+import CloudinaryImage from "@/components/ui/clodinary_image"
 export default function(){
     return( <div className='max-w-500 w-[95%] mx-auto ' > <div className="flex flex-col justify-between   mx-auto max-w-400 gap-12 items-center w-full lg:flex-row h-auto 2xl:gap-0   py-10 " >
        <div className='flex w-full lg:w-[50%] justify-center' >
         <div className=" relative w-[110%] h-80 sm:w-150 sm:h-120" >
-            <Image
-              src="/haha.webp"
-              alt='Image'
-              fill
-              className="absolute inset-0 w-full h-full object-cover transition-transform rounded-sm duration-700 group-hover:scale-105"
+            <CloudinaryImage
+              src="https://res.cloudinary.com/dlxcorjvq/image/upload/v1784313030/car_parts/ogxpjsuendoxhhub9tvj.jpg"
+            //   alt='Image'
+            //   fill
+            //   className="absolute inset-0 w-full h-full object-cover transition-transform rounded-sm duration-700 group-hover:scale-105"
             />
         </div></div>
         <div className='flex lg:w-[50%] lg:h-110' >
@@ -28,7 +29,7 @@ export default function(){
     
 
         </div>
-     <Button className="bg-red-600 hover:bg-red-500 hover:text-primary-foreground border-0 w-full  rounded-[3px] items>center justify-center max-w-18 " variant="outline">Edit</Button>
+     {/* <Button className="bg-red-600 hover:bg-red-500 hover:text-primary-foreground border-0 w-full  rounded-[3px] items>center justify-center max-w-18 " variant="outline">Edit</Button> */}
         </div>
             <div className="flex justify-between items-center w-full" >
             <h1 className="text-white text-2xl font-bold pt-7">Feul Pump</h1>

@@ -38,9 +38,9 @@ export default async function Page() {
 
       {/* <Logo width={160} height={120} />
       <LogoLoader /> */}
-      <Hero />
+      {/* <Hero />
       <Section/>
-      <Category/>
+      <Category/> */}
       {/* <ItemDisplaySection/>  */}
       <PartDetails/>
       {/* <PartDetails/>

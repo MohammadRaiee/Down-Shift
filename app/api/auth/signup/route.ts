@@ -75,6 +75,25 @@ console.log(body.GPSLocation ,'fdfffffffffffffffffffffffffffffffffff')
         );
       }
 
+       function getSafeImageUrl(url: string) {
+  // 1. Check if the URL exists and is not empty
+  if (!url) return "";
+
+  // 2. Check if the URL is for an SVG image
+  const isSvg = url.toLowerCase().includes('.svg');
+
+  // 3. Check if the URL doesn't already contain the sanitize parameter
+  const needsSanitize = !url.includes('/fl_sanitize/');
+
+  if (isSvg && needsSanitize) {
+    // Add fl_sanitize after /upload/
+    return url.replace('/upload/', '/upload/fl_sanitize/');
+  }
+
+  // Return the original URL if it's not an SVG or is already sanitized
+  return url;
+}
+
       // Create Seller
       createdAccount = await prisma.seller.create({
         data: {
@@ -86,7 +105,7 @@ console.log(body.GPSLocation ,'fdfffffffffffffffffffffffffffffffffff')
           storeName,
           businessType,
           businessReg: businessReg || null,
-          storeLogo: storeLogo || null,
+          storeLogo:storeLogo ? {imageURL: getSafeImageUrl(storeLogo.url), public_id: storeLogo.public_id} :undefined,
           GPSLocation:GPSLocation || null,
           address,
           city,

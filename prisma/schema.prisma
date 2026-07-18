@@ -21,9 +21,7 @@ model Seller {
   phone           String
   storeName       String
   businessType    String
-  image           Json?
   businessReg     String?
-  storeLogo       String?
   GPSLocation     String?
   address         String
   city            String
@@ -31,6 +29,8 @@ model Seller {
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
   isActive        Boolean  @default(true)
+  image           Json?
+  storeLogo       Json?
   parts           Parts[]
 }
 
@@ -66,7 +66,6 @@ model CarModel {
 
 model Parts {
   id              Int        @id @default(autoincrement())
-  partBrand       String     @default("BOCH")
   name            String
   partNumber      String
   price           Float
@@ -77,6 +76,7 @@ model Parts {
   countryOfOrigin String
   quality         String     @default("Good")
   categoryId      Int?
+  partBrand       String     @default("BOCH")
   cartItems       CartItem[]
   cars            PartCar[]
   category        Category?  @relation(fields: [categoryId], references: [id])
@@ -84,11 +84,11 @@ model Parts {
 }
 
 model OrphanedAsset {
-  id          String   @id @default(cuid())
-  publicId    Json[]   @unique
-  retryCount  Int      @default(0)
-  lastError   String?  
-  createdAt   DateTime @default(now())
+  id         String   @id @default(cuid())
+  publicId   Json[]   @unique
+  retryCount Int      @default(0)
+  lastError  String?
+  createdAt  DateTime @default(now())
 }
 
 model Category {

@@ -4,40 +4,52 @@ import { after } from 'next/server';
 import { prisma } from "@/lib/prisma";
 import { v2 as cloudinary } from "cloudinary";
 
-export async function uploadImage(image: File[]) {
-  const imagesUrl: string[] = [];
+export async function uploadImage(image: File | File[] | FileList) {
+  const imagesUrl: any[] = []; // يمكنك تغيير any للنوع المناسب لبيانات Cloudinary
   const UploadURL = process.env.CLOUDINARY_UPLOAD_URL;
   const StringURL = String(UploadURL);
 
   try {
-    if (!image || image.length === 0) {
-      throw new Error("there are no images");
+    // 1. التحقق من وجود المدخل
+    if (!image) {
+      throw new Error("There are no images");
+    }
+
+    // 2. توحيد المدخل ليكون دائماً مصفوفة (Array)
+    let filesArray: File[];
+    if (image instanceof File) {
+      filesArray = [image]; // تحويل الملف الواحد إلى مصفوفة
+    } else {
+      filesArray = Array.from(image); // تحويل File[] أو FileList إلى مصفوفة
+    }
+
+    // التحقق من أن المصفوفة ليست فارغة
+    if (filesArray.length === 0) {
+      throw new Error("There are no images");
     }
 
     console.log(StringURL, 'uploading images');
 
-    if (typeof StringURL !== "string" || StringURL.trim() === "") {
-      throw new Error("Error Uploading Images");
+    if (typeof StringURL !== "string" || StringURL.trim() === "" || StringURL === "undefined") {
+      throw new Error("Error Uploading Images: Invalid URL");
     }
 
-    for (const file of Array.from(image)) {
+    // 3. المرور على جميع الملفات ورفعها
+    for (const file of filesArray) {
       const formData = new FormData();
       formData.append("file", file);
       formData.append("upload_preset", "car_parts");
       formData.append("folder", "car_parts");
 
-      const res = await fetch(
-        StringURL,
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const res = await fetch(StringURL, {
+        method: "POST",
+        body: formData,
+      });
 
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || "Upload failed");
+        throw new Error(data.error?.message || data.error || "Upload failed");
       }
 
       imagesUrl.push(data);
@@ -46,9 +58,56 @@ export async function uploadImage(image: File[]) {
     return imagesUrl;
   } catch (error) {
     console.error("Error uploading images:", error);
-    throw new Error("upload image failed");
+    throw new Error("Upload image failed");
   }
 }
+
+
+// export async function uploadImage(image: File[]) {
+//   const imagesUrl: string[] = [];
+//   const UploadURL = process.env.CLOUDINARY_UPLOAD_URL;
+//   const StringURL = String(UploadURL);
+
+//   try {
+//     if (!image || image.length === 0) {
+//       throw new Error("there are no images");
+//     }
+
+//     console.log(StringURL, 'uploading images');
+
+//     if (typeof StringURL !== "string" || StringURL.trim() === "") {
+//       throw new Error("Error Uploading Images");
+//     }
+
+//     for (const file of Array.from(image)) {
+//       const formData = new FormData();
+//       formData.append("file", file);
+//       formData.append("upload_preset", "car_parts");
+//       formData.append("folder", "car_parts");
+
+//       const res = await fetch(
+//         StringURL,
+//         {
+//           method: "POST",
+//           body: formData,
+//         }
+//       );
+
+//       const data = await res.json();
+
+//       if (!res.ok) {
+//         throw new Error(data.error || "Upload failed");
+//       }
+
+//       imagesUrl.push(data);
+//     }
+
+//     return imagesUrl;
+//   } catch (error) {
+//     console.error("Error uploading images:", error);
+//     throw new Error("upload image failed");
+//   }
+// }
 
 // Configure Cloudinary
 cloudinary.config({
