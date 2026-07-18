@@ -126,13 +126,15 @@ cd your-repo
 npm install
 
 # 3. Configure environment variables
-# Copy .env.example to .env and fill in your values:
+# .env.example:
+
 # DATABASE_URL=
 # NEXTAUTH_SECRET=
 # NEXTAUTH_URL=
-# CLOUDINARY_CLOUD_NAME=
+# NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
 # CLOUDINARY_API_KEY=
 # CLOUDINARY_API_SECRET=
+# CLOUDINARY_UPLOAD_URL=
 
 # 4. Run database migrations
 npx prisma migrate dev
