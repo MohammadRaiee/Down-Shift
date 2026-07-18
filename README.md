@@ -110,7 +110,9 @@ See [prisma/schema.prisma](./prisma/schema.prisma) for the full schema.
     ├── schema.prisma    # Database schema
     ├── migrations/      # Migration history
     └── ERD.svg          # Entity relationship diagram
+## Getting Started
 
+```bash
 # 1. Clone the repository
 git clone [https://github.com/your-username/your-repo.git](https://github.com/your-username/your-repo.git)
 cd your-repo
@@ -129,10 +131,6 @@ npm install
 
 # 4. Run database migrations
 npx prisma migrate dev
-
-# 5. Start the development server
-npm run dev
-
 What I Learned
 Handling a multi-step, multi-service operation (DB + Cloudinary) so it fails safely instead of leaving orphaned files or broken references.
 
@@ -143,8 +141,5 @@ Managing guest carts and merging them automatically on authentication.
 Designing relational schemas and writing incremental migrations with Prisma.
 
 Building a debounced search system connected to a filtered PostgreSQL query.
-
-Contact
-[اسمك هنا]
-
-LinkedIn · GitHub · your.email@example.com
+# 5. Start the development server
+npm run devLinkedIn · GitHub · your.email@example.com
