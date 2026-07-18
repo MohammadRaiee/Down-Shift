@@ -41,9 +41,9 @@ I built this to go beyond basic CRUD and practice the patterns real e-commerce a
 
 
 ![Home Page](./public/screenshots/home.png)
-![Part Details](./public/screenshots/part-details.png)
+![Part Details](./public/screenshots/partDetails.png)
 ![Seller Dashboard](./public/screenshots/dashboard.png)
-![Cart](./public/screenshots/cart.png)
+![Edit Form](./public/screenshots/editForm.png)
 
 ---
 
