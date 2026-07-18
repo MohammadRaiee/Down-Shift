@@ -142,6 +142,49 @@ developer portfolio.
 
 
 See [prisma/schema.prisma](./prisma/schema.prisma) for the full schema.
+[7/17/2026 1:36 PM] MOHAMMAD: app/
+├── (auth)/          # Login & Signup pages
+├── (public)/        # Home page & part details [id]
+├── api/             # API routes (auth, cart, parts, cloudinary)
+└── dashboard/       # Seller dashboard (part management)
+components/
+├── dashboard/       # Seller management components
+├── partDetails/     # Part page with image swap gallery
+├── cart/            # Cart drawer
+├── auth/            # Sign in / Sign up forms
+└── ui/              # Shared UI components (shadcn/ui)
+prisma/
+├── schema.prisma    # Database schema
+├── migrations/      # Migration history
+└── ERD.svg          # Entity relationship diagram
+[7/17/2026 1:38 PM] MOHAMMAD: ---
+
+## Getting Started
+
+`bash
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
+npm install
+ Copy .env.example to .env and fill in your values:
+ DATABASE_URL=
+NEXTAUTH_SECRET=
+NEXTAUTH_URL=
+
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+ npx prisma migrate dev
+npm run dev
+ What I Learned
+Handling a multi-step, multi-service operation (DB + Cloudinary) so
+it fails safely instead of leaving orphaned files or broken references
+Structuring a multi-role app with Next.js App Router and Middleware
+Managing guest carts and merging them automatically on authentication
+Designing relational schemas and writing incremental migrations with Prisma
+Building a debounced search system connected to a filtered PostgreSQL query
+ Contact
+[اسمك]
+LinkedIn · GitHub · your.email@example.com
 
 Key models: User, Part, Category, Cart, CartItem, Image, OrphanedAsset
 
