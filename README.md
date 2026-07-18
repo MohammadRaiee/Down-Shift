@@ -154,5 +154,5 @@ npm run dev
 
 ## Contact
 
-**[اسمك هنا]**  
-[LinkedIn](https://linkedin.com/in/yourprofile) · [GitHub](https://github.com/your-username) · [your.email@example.com](mailto:your.email@example.com)
+**Mohammad Raiee**  
+[LinkedIn](https://linkedin.com/in/yourprofile) · [GitHub](https://github.com/your-username) · [mohammadraiee@gmail.com](mailto:your.emae.com)
