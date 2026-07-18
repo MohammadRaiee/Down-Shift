@@ -155,4 +155,4 @@ npm run dev
 ## Contact
 
 **Mohammad Raiee**  
-[LinkedIn](https://www.linkedin.com/in/mohammad-raiee-7225143a7) · [GitHub](https://github.com/MohammadRaiee) · [mohammadraiee@gmail.com](mailto:your.emae.com)
+[LinkedIn](https://www.linkedin.com/in/mohammad-raiee-7225143a7) · [GitHub](https://github.com/MohammadRaiee) · [mohammadraiee12@gmail.com](mohammadraiee12@gmail.com)
