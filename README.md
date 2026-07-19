@@ -10,7 +10,7 @@
 A full-stack e-commerce platform for buying and selling car parts,  
 built with Next.js 14 App Router, PostgreSQL, and Prisma ORM.
 
-> 🚧 **Actively in development** — core features (auth, dashboard, cart, image pipeline) are working; search/filtering is the current focus.
+>  **Actively in development** — core features (auth, dashboard, cart, image pipeline) are working; search/filtering is the current focus.
 
 I built this to go beyond basic CRUD and practice the patterns real e-commerce apps need — role-based dashboards, cloud image lifecycle management, and cart state that survives login. It's part of my developer portfolio.
 
@@ -62,20 +62,20 @@ I built this to go beyond basic CRUD and practice the patterns real e-commerce a
 
 ## Features
 
-### 🛍️ Buyer
+###  Buyer
 - Browse car parts by category
-- 🚧 Search parts by name with debounced suggestions (in progress)
+-  Search parts by name with debounced suggestions (in progress)
 - Part details page with image gallery
 - Add to cart (guest cart + persistent cart for logged-in users)
 - Guest cart merges automatically on login
 
-### 🏪 Seller Dashboard
+###  Seller Dashboard
 - Publish, edit, and delete parts with image upload via Cloudinary
 - Toggle part visibility (show / hide from public listing)
 - Bulk select and delete multiple parts at once
 - Manage store profile
 
-### ⚙️ System
+###  System
 - Role-based authentication (Buyer / Seller)
 - Protected routes via Next.js Middleware
 - Full image lifecycle handling — upload, replace, and delete, with orphaned-asset cleanup and error handling at every step
