@@ -1,4 +1,4 @@
-# Origin Part (AutoParts Marketplace)
+#    DOWN SHIFT (AutoParts Marketplace)
 
 ![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
@@ -119,8 +119,8 @@ See [prisma/schema.prisma](./prisma/schema.prisma) for the full schema.
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+https://github.com/MohammadRaiee/Down-Shift
+cd Down-Shift
 
 # 2. Install dependencies
 npm install
