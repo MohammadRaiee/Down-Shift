@@ -159,7 +159,7 @@ npm run dev
 
 
 [LinkedIn](https://www.linkedin.com/in/mohammad-raiee-7225143a7) · [GitHub](https://github.com/MohammadRaiee) · [example](mohammadraiee@gmail.com)
-
+<!-- 
 
 ## GitHub Education + Car-Parts Implementation Plan
 
@@ -221,4 +221,4 @@ npm run dev
 Start with **specific feature definition** for the current project:
 - Define the exact search enhancements to deliver first (inputs, validation, result ranking, empty states).
 - Map each feature to a GitHub Issue and assign it to Milestone A.
-- Implement in small PRs, each with before/after behavior and test evidence.
+- Implement in small PRs, each with before/after behavior and test evidence. -->
