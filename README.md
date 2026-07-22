@@ -158,7 +158,7 @@ npm run dev
 ## Contact
 
 
-[LinkedIn](https://www.linkedin.com/in/mohammad-raiee-7225143a7) · [GitHub](https://github.com/MohammadRaiee) · [Email Mohammad](mailto:mohammadraiee@gmail.com)
+[LinkedIn](https://www.linkedin.com/in/mohammad-raiee-7225143a7) · [GitHub](https://github.com/MohammadRaiee) · [Email Mohammad](mailto:mohammadraiee12@gmail.com)
 <!-- 
 
 ## GitHub Education + Car-Parts Implementation Plan
