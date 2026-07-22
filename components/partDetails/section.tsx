@@ -1,0 +1,15 @@
+// name
+// partNumber
+// price
+// description
+// countryOfOrigin
+// quantity
+// category
+// publisher
+// cars
+// image
+// quality
+// categoryId
+// publisherId
+// createdAt
+// updatedAt 

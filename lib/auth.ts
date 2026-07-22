@@ -20,7 +20,7 @@ export const authOptions: NextAuthConfig = {
         const email =  credentials.email as string;
         const password = credentials.password  as string;
 
-        // 1️⃣ تحقق أولاً في جدول Seller
+        // 1️⃣ Check the Seller table first
         const seller = await prisma.seller.findUnique({
           where: { email },
         });
@@ -32,11 +32,11 @@ export const authOptions: NextAuthConfig = {
             id: seller.id.toString(),
             email: seller.email,
             role: "seller",
-            storeName: seller.storeName, // يمكن إضافتها إذا احتجتها
+            storeName: seller.storeName, // Can be added if needed
           };
         }
 
-        // 2️⃣ تحقق في جدول User
+        // 2️⃣ Check the User table
         const user = await prisma.user.findUnique({
           where: { email },
         });
@@ -79,7 +79,6 @@ export const authOptions: NextAuthConfig = {
     },
   },
 };
-
 // import type { NextAuthConfig } from "next-auth"
 // import Credentials from "next-auth/providers/credentials"
 // import bcrypt from "bcrypt"

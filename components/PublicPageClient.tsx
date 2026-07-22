@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import YmmSearch from '@/components/parts/YmmSearch';
-import PublicParts from '@/components/parts/public_parts';
+import YmmSearch from '@/deleted/ignoredparts/YmmSearch';
+import PublicParts from '@/deleted/ignoredparts/public_parts';
 import {categoryIdsToNames} from "@/lib/utils";
 
 interface SearchResult {
@@ -22,28 +22,28 @@ export default function PublicPageClient({ initialParts }: PublicPageClientProps
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [hasSearched, setHasSearched] = useState(false);
 
-
-  // عند عدم البحث: عرض القطع الأصلية
-  // عند البحث: عرض نتائج البحث
+  // When not searching: show initial parts
+  // When searching: show search results
   const displayParts = hasSearched ? searchResults : initialParts;
 
-  // إضافة فلتر التصنيف
+  // Add category filter
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
-  // استخراج جميع التصنيفات المتوفرة من البيانات
+  // Extract all available categories from data
   const categoriesIds = Array.from(
     new Set((hasSearched ? searchResults : initialParts).map((part: any) =>  part.categoryId).filter(Boolean))
   );
   const categories = categoryIdsToNames(categoriesIds);
-console.log("Available categories:", categories);
-  // تصفية القطع حسب التصنيف المحدد
+  console.log("Available categories:", categories);
+
+  // Filter parts by selected category
   const filteredParts = selectedCategory === "all"
     ? displayParts
     : displayParts.filter((part: any) => part.categoryId === +selectedCategory);
 
   return (
     <div className="w-full">
-      {/* مكون البحث */}
+      {/* Search component */}
       <div className="mb-12 px-4">
         <YmmSearch 
           onSearch={(results: SearchResult[]) => {
@@ -52,9 +52,9 @@ console.log("Available categories:", categories);
           }}
         />
 
-        {/* فلتر التصنيف */}
+        {/* Category filter */}
           <div className="flex flex-col gap-2 mt-4">
-            {/* أزرار التصنيفات السريعة */}
+            {/* Quick category buttons */}
             {categories.length > 4 && (
               <div className="flex gap-2 justify-end flex-wrap">
                 {categories.slice(0, 4).map((cat) => (
@@ -68,14 +68,14 @@ console.log("Available categories:", categories);
                 ))}
               </div>
             )}
-            {/* قائمة التصنيفات */}
+            {/* Category dropdown */}
             <div className="flex justify-end">
               <select
                 className="select select-bordered"
                 value={selectedCategory}
                 onChange={e => setSelectedCategory(e.target.value)}
               >
-                <option value="all">كل التصنيفات</option>
+                <option value="all">All Categories</option>
                 {categories.map((cat) => (
                   <option key={cat.categoryId} value={cat.categoryId}>
                     {cat.category}
@@ -85,24 +85,23 @@ console.log("Available categories:", categories);
             </div>
           </div>
 
-
-        {/* زر لإعادة عرض جميع القطع */}
+        {/* Button to reset and show all parts */}
         {hasSearched && (
           <div className="text-center mt-4">
             <button
               onClick={() => setHasSearched(false)}
               className="btn btn-outline"
             >
-              عرض جميع القطع
+              Show all parts
             </button>
           </div>
         )}
       </div>
 
-      {/* القطع المعروضة */}
+      {/* Displayed parts */}
       {hasSearched && searchResults.length === 0 ? (
         <div className="text-center py-12">
-          <p className="text-gray-500 text-lg">لم يتم العثور على نتائج</p>
+          <p className="text-gray-500 text-lg">No results found</p>
         </div>
       ) : (
         <div className="space-y-12 px-4">

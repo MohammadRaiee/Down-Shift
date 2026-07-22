@@ -55,7 +55,6 @@ export async function DELETE(
   { params }: { params: { itemId: string } }
 ) {
   try {
-    console.log('حذف عنصر من السلة');
     const session = await auth();
     if (!session?.user?.id) {
       return jsonError("UNAUTHORIZED", "Authentication required.", 401);

@@ -13,7 +13,6 @@ type MergeItemInput = {
 
 export async function POST(req: NextRequest) {
   try {
-    console.log('دمج السلة');
     const session = await auth();
     if (!session?.user?.id) {
       return jsonError("UNAUTHORIZED", "Authentication required.", 401);

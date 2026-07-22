@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
 /**
- * Hook مخصص لجلب الاقتراحات من API
- * يدعم الجلب بناءً على النوع والاستعلام والمعاملات الإضافية
+ * Custom hook to fetch suggestions from an API
+ * Supports fetching based on type, query, and additional parameters
  */
 type FetchSuggestionsOptions = {
   limit?: number;
@@ -21,7 +21,7 @@ export function useFetchSuggestions(
   const { limit, allowEmptyQuery } = options;
 
   useEffect(() => {
-    // عدم الجلب إذا كانت معاملات البحث غير كافية
+    // Skip fetching if search parameters are insufficient
     if (type === 'years' && !brandId) {
       setSuggestions([]);
       return;
@@ -44,7 +44,7 @@ export function useFetchSuggestions(
       setError(null);
 
       try {
-        // بناء معاملات الاستعلام
+        // Build query parameters
         const params = new URLSearchParams();
         params.append('type', type);
 
