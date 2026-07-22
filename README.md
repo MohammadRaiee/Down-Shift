@@ -157,7 +157,9 @@ npm run dev
 
 ## Contact
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**[اسمك هنا]**  
+[LinkedIn](https://www.linkedin.com/in/mohammad-raiee-7225143a7) · [GitHub](https://github.com/MohammadRaiee) · [example](mohammadraiee@gmail.com)
+
 
 ## GitHub Education + Car-Parts Implementation Plan
 
